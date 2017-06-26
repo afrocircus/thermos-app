@@ -1,0 +1,16 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: thermos-app
+  labels:
+    name: thermos-app
+  namespace: thermos
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 5000
+    nodePort: 30001
+  selector:
+    name: thermos-app

@@ -1,0 +1,27 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: thermos-app
+  namespace: thermos
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: thermos-app
+      version: 0.1.0
+  template:
+    metadata:
+      labels:
+        name: thermos-app
+        version: 0.1.0
+    spec:
+      containers:
+      - name: thermos-app
+        image: eu.gcr.io/mystic-bank-171609/thermos-flask-app
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        ports:
+        - containerPort: 5000
